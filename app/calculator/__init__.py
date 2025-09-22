@@ -6,7 +6,7 @@ and divide numbers based on what the user types.
 # First, we need to get some functions that can actually do the math for us. These functions (addition, 
 # subtraction, multiplication, and division) are in another file called "operations.py" in the "app" folder.
 # This is like opening a toolbox and pulling out the tools we need to do our math.
-from app.operations import addition, subtraction, multiplication, division
+from app.operations import Operations
 
 # Now we're going to create the main function called "calculator". 
 # A function is just a block of code that does something when you call it, kind of like a recipe that tells the 
