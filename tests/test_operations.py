@@ -11,19 +11,21 @@ Number = Union[int, float]
 @pytest.mark.parametrize(
     "a, b, expected", 
     [
-        (2, 3, 5),
-        (5, 3, 2),
-        (4, 3, 12),
-        (10, 2, 5),
-    ]
-    ids=[
         (2, 3, 5),           # Test adding two positive integers
         (0, 0, 0),           # Test adding two zeros
         (-1, 1, 0),          # Test adding a negative and a positive integer
         (2.5, 3.5, 6.0),     # Test adding two positive floats
         (-2.5, 3.5, 1.0),    # Test adding a negative float and a positive float
+    ],
+    ids=[
+        "add_two_positive_integers",
+        "add_two_zeros",
+        "add_negative_and_positive_integer",
+        "add_two_positive_floats",
+        "add_negative_float_and_positive_float",
     ]
 )
+
 def test_addition(a: Number, b: Number, expected: Number):
     result = Operations.addition(a, b)
     assert result == expected, f"Expected {expected}, got {result}"
@@ -51,4 +53,54 @@ def test_addition(a: Number, b: Number, expected: Number):
 )
 def test_subtraction(a: Number, b: Number, expected: Number) -> None:
     result = Operations.subtraction(a, b)
+    assert result == expected, f"Expected {expected}, got {result}"
+
+#-----------------------------------------------
+# Testing for multiplication with parameterized inputs
+#-----------------------------------------------
+
+@pytest.mark.parametrize(
+    "a, b, expected",
+    [
+        (2, 3, 6),           # Test multiplying two positive integers
+        (0, 0, 0),           # Test multiplying two zeros
+        (-1, 1, -1),         # Test multiplying a negative and a positive integer
+        (2.5, 3.5, 8.75),    # Test multiplying two positive floats
+        (-2.5, 3.5, -8.75),  # Test multiplying a negative float and a positive float
+    ],
+    ids=[
+        "multiply_two_positive_integers",
+        "multiply_two_zeros",
+        "multiply_negative_integer_with_positive_integer",
+        "multiply_two_positive_floats",
+        "multiply_negative_float_with_positive_float",
+    ]
+)
+def test_multiplication(a: Number, b: Number, expected: Number) -> None:
+    result = Operations.multiplication(a, b)
+    assert result == expected, f"Expected {expected}, got {result}"
+    
+#-----------------------------------------------
+# Testing for division with parameterized inputs
+#-----------------------------------------------  
+
+@pytest.mark.parametrize(
+    "a, b, expected",
+    [
+        (6, 3, 2.0),           # Test dividing two positive integers
+        (-6, -3, 2.0),         # Test dividing two negative integers
+        (6.0, 3.0, 2.0),       # Test dividing two positive floats
+        (-6.0, 3.0, -2.0),     # Test dividing a negative float by a positive float
+        (0, 5, 0.0),            # Test dividing zero by a positive integer
+    ],
+    ids=[
+        "divide_two_positive_integers",
+        "divide_two_negative_integers",
+        "divide_two_positive_floats",
+        "divide_negative_float_by_positive_float",
+        "divide_zero_by_positive_integer",
+    ]
+)
+def test_division(a: Number, b: Number, expected: float) -> None:
+    result = Operations.division(a, b)
     assert result == expected, f"Expected {expected}, got {result}"
