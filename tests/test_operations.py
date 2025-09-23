@@ -104,3 +104,30 @@ def test_multiplication(a: Number, b: Number, expected: Number) -> None:
 def test_division(a: Number, b: Number, expected: float) -> None:
     result = Operations.division(a, b)
     assert result == expected, f"Expected {expected}, got {result}"
+    
+#-----------------------------------------------
+# Testing for division by zerowith parameterized inputs
+#----------------------------------------------- 
+
+@pytest.mark.parametrize(
+    "a, b",
+    [
+        (1, 0),   # Test dividing a positive integer by zero
+        (0, 0),   # Test dividing zero by zero
+        (-1, 0),  # Test dividing a negative integer by zero
+        (1.0, 0.0),  # Test dividing a positive float by zero
+        (0.0, 0.0),  # Test dividing zero by a float
+    ],
+    ids=[
+        "divide_positive_integer_by_zero",
+        "divide_zero_by_zero",
+        "divide_negative_integer_by_zero",
+        "divide_positive_float_by_zero",
+        "divide_zero_by_float",
+    ]
+)
+def test_division_by_zero(a: Number, b: Number) -> None:
+    with pytest.raises(ValueError, match="Division by zero is not allowed.") as excinfo:
+        Operations.division(a, b)
+    assert "Division by zero is not allowed." in str(excinfo.value), \
+        f"Expected error message 'Division by zero is not allowed.', but got '{excinfo.value}'"
