@@ -245,3 +245,16 @@ class DivideCalculation(Calculation):
             raise ZeroDivisionError("Cannot divide by zero.")
         # Calls the division method from the Operation module to perform the division.
         return Operation.division(self.a, self.b)
+    
+@CalculationFactory.register_calculation('power')
+class PowerCalculation(Calculation):
+    """
+    MultiplyCalculation represents a multiplication operation.
+    
+    By encapsulating the multiplication logic here, we achieve a clear separation of 
+    concerns, making it easy to adjust the multiplication logic without affecting other calculations.
+    """
+
+    def execute(self) -> float:
+        # Calls the multiplication method from the Operation module to perform the multiplication.
+        return Operation.power(self.a, self.b) # pragma: no cover
