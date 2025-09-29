@@ -362,3 +362,20 @@ def test_operations_invalid_input_types(calc_method: Callable[..., float], a: fl
     # Act & Assert
     with pytest.raises(expected_exception):
         calc_method(a, b)
+
+def test_power_positive():
+    """
+    Test the power method with two positive numbers.
+
+    This test verifies that raising a positive number to the power of another positive number returns the correct result.
+    """
+    # Arrange
+    a = 2.0
+    b = 2.0
+    expected_result = 4.0
+
+    # Act
+    result = Operation.power(a, b)
+
+    # Assert
+    assert result == expected_result, f"Expected {a} ** {b} to be {expected_result}, got {result}"
