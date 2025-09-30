@@ -322,7 +322,7 @@ def test_factory_create_unsupported_calculation():
     # Arrange
     a = 10.0
     b = 5.0
-    unsupported_type = 'modulus'  # An unsupported calculation type
+    unsupported_type = 'factorial'  # An unsupported calculation type
 
     # Act & Assert
     with pytest.raises(ValueError) as exc_info:
