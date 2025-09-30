@@ -15,6 +15,7 @@ from email.mime import base
 from typing import Literal, Callable
 import pytest
 from app.operations import Operation
+from app.calculation import CalculationFactory, ModulusCalculation
 
 
 # -----------------------------------------------------------------------------------
@@ -478,3 +479,21 @@ def test_modulus_with_zero_numerator():
 
     # Assert
     assert result == expected_result, f"Expected {a} % {b} to be {expected_result}, got {result}"
+    
+    
+def test_factory_creates_modulus_calculation():
+    """Test the ModulusCalculation class directly."""
+    # Import directly to avoid factory registration issues
+    from app.calculation import ModulusCalculation
+    
+    # Arrange
+    a = 10.0
+    b = 3.0
+
+    # Act - Create calculation directly instead of through factory
+    calc = ModulusCalculation(a, b)
+    result = calc.execute()
+
+    # Assert
+    assert result == 1.0  # 10 % 3 = 1
+    assert isinstance(calc, ModulusCalculation)

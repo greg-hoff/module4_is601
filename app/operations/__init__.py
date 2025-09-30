@@ -155,6 +155,7 @@ class Operation:
         """
         return base ** exponent  # Raises `base` to the power of `exponent` and returns the result.
     
+    #modulus defined here - registration issue came from elsewhere
     @staticmethod
     def modulus(a: float, b: float) -> float:
         """
