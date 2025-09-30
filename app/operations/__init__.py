@@ -154,3 +154,31 @@ class Operation:
           the methods easily reusable in other parts of the program.
         """
         return base ** exponent  # Raises `base` to the power of `exponent` and returns the result.
+    
+    @staticmethod
+    def modulus(a: float, b: float) -> float:
+        """
+        Computes the modulus (remainder) of the first floating-point number divided by the second.
+
+        **Parameters:**
+        - `a (float)`: The dividend.
+        - `b (float)`: The divisor.
+        
+        **Returns:**
+        - `float`: The remainder of `a` divided by `b`.
+
+        **Raises:**
+        - `ValueError`: If the divisor `b` is zero, as modulus by zero is undefined.
+
+        **Example:**
+        >>> Operation.modulus(10.0, 3.0)
+        1.0
+        >>> Operation.modulus(10.0, 0.0)
+        Traceback (most recent call last):
+            ...
+        ValueError: Modulus by zero is not allowed.
+        """
+        if b == 0:
+            # Checks if the divisor is zero to prevent undefined modulus operation.
+            raise ValueError("Modulus by zero is not allowed.")  # Raises an error if modulus by zero is attempted.
+        return a % b  # Computes the modulus and returns the remainder.
