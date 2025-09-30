@@ -556,6 +556,7 @@ def test_calculation_str_parameterized(
     mock_division, mock_multiplication, mock_subtraction, mock_addition,
     calc_type, a, b, expected_str
 ):
+    # could this spot have caused the issue for power and modulus to not be registered? ==================================================
     """
     Parameterized test for __str__ method of Calculation subclasses.
 

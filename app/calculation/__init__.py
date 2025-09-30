@@ -249,36 +249,25 @@ class DivideCalculation(Calculation):
 @CalculationFactory.register_calculation('power')
 class PowerCalculation(Calculation):
     """
-    MultiplyCalculation represents a multiplication operation.
-    
-    By encapsulating the multiplication logic here, we achieve a clear separation of 
-    concerns, making it easy to adjust the multiplication logic without affecting other calculations.
+    PowerCalculation represents a power operation.
     """
 
     def execute(self) -> float:
-        # Calls the multiplication method from the Operation module to perform the multiplication.
+        # Calls the power method from the Operation module to perform the power operation.
         return Operation.power(self.a, self.b) # pragma: no cover
     
 @CalculationFactory.register_calculation('modulus')
 class ModulusCalculation(Calculation):
     """
     ModulusCalculation represents a modulus operation.
-    """
-
-    def execute(self) -> float:
-        # Calls the modulus method from the Operation module to perform the modulus operation.
-        return Operation.modulus(self.a, self.b)
-
-    """
-    DivideCalculation represents a division operation.
     
-    **Special Case - Division by Zero**: Division requires extra error handling to 
+    **Special Case - Modulus by Zero**: Modulus requires extra error handling to 
     prevent dividing by zero, which would cause an error in the program. This class 
     checks if the second operand is zero before performing the operation.
     """
 
     def execute(self) -> float:
-        # Before performing division, check if `b` is zero to avoid ZeroDivisionError.
+        # Before performing modulus, check if `b` is zero to avoid ZeroDivisionError.
         if self.b == 0:
             raise ZeroDivisionError("Modulus by zero is not allowed.")
         # Calls the modulus method from the Operation module to perform the modulus.
